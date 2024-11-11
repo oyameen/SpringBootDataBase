@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+    restart: always
+    container_name: SpringBootDataBaseH2-APP
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    env_file:
+      - ./.env
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:${H2_DATABASE_NAME}
+      - SPRING_DATASOURCE_USERNAME=${H2_DATABASE_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${H2_DATABASE_PASSWORD}
+
+
+
