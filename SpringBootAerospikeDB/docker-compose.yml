@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+    restart: always
+    container_name: SpringBootAerospikeDB-APP
+    ports:
+      - ${SERVER_PORT}:8090
+    env_file:
+      - ./.env
+    depends_on:
+      - aerospike
+  aerospike:
+    image: aerospike/aerospike-server-enterprise:latest
+    container_name: SpringBootAerospikeDB-AerospikeDB
+    restart: always
+    ports:
+      - ${AEROSPIKE_DB_PORTS}:3000-3003
