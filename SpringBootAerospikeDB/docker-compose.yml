@@ -16,3 +16,5 @@ services:
     restart: always
     ports:
       - ${AEROSPIKE_DB_PORTS}:3000-3003
+# To use aql commands, run the following command
+#  docker run --network springbootaerospikedb_default  -ti aerospike/aerospike-tools:latest aql -h  $(docker inspect  -f '{{.NetworkSettings.Networks.springbootaerospikedb_default.IPAddress }}' SpringBootAerospikeDB-AerospikeDB)
